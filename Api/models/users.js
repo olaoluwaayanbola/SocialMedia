@@ -12,11 +12,11 @@ const UserSchema = new mongoose.Schema({
         type:String,
         require:true,
         min:5,
-        max:30,
+        max:40,
         unique:true
     },
     password:{
-        type:Number||String,
+        type:String,
         require:true,
         min:3,
         unique:true
@@ -41,9 +41,7 @@ const UserSchema = new mongoose.Schema({
         type:Boolean,
         default:false,
     },
-    {
-        timestamps:true
-    }
+    // timestamps:true
 });
 
 module.exports = mongoose.model('User', UserSchema);
