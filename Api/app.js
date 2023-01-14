@@ -18,7 +18,7 @@ mongoose.connect(process.env.MONGO_URL,() =>{
 
 // Middle-wares
 app.use(express.json())
-app.use(helmet())
+// app.use(helmet())
 app.use(morgan("common"))
 
 // middleware for routes
@@ -31,6 +31,6 @@ app.get("/",(req,res) => {
     res.send("welcome to homepage")
 })
 
-app.listen(12000,() => {
+app.listen(2200,() => {
     console.log("sever is online")
 })
