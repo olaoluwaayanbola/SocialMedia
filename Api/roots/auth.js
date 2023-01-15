@@ -34,13 +34,15 @@ Router.post("/login",async(req,res) => {
         email:req.body.email,
         // password:req.body.password
         })
-        console.log(user)
         !user && res.status(404).json("user not found")
         // res.status(200).send("you can enter")
+        const validPassword = await bcrypt.compare(req.body.password,user.password)
+        !validPassword && res.status(404).send("Incorrect password")
+        res.status(200).send(user)
+        
     }catch(err){
-        console.log(err)
+        res.status(500).json(err)
     }  
-    // res.send("hello ")
 })
 
 module.exports = Router
