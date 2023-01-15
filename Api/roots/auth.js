@@ -34,6 +34,7 @@ Router.post("/login",async(req,res) => {
         email:req.body.email,
         // password:req.body.password
         })
+        console.log(user)
         !user && res.status(404).json("user not found")
         // res.status(200).send("you can enter")
     }catch(err){
