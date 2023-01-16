@@ -1,5 +1,5 @@
 const express = require("express")
-// const user = require("../models/users")
+const User = require("../models/users")
 const db = require("mongodb").Db
 const bcrypt = require("bcrypt")
 const Router = express.Router()
@@ -19,7 +19,8 @@ Router.put("/:id",async (req,res) => {
             }
         }
             try{
-                const getUser = await Db.users.updateOne(req.body.userId,{$set:req.body})
+                // const getUser = await users.updateOne(req.body.userId,{$set:req.body})
+                const getUser = await Users.updateOne(req.body.userId,{$set:req.body})
                 res.status(200).json("Data base has been updated")
         }catch(err){
             console.log(err)
