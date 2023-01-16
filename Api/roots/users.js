@@ -20,7 +20,9 @@ Router.put("/:id",async (req,res) => {
         }
             try{
                 // const getUser = await users.updateOne(req.body.userId,{$set:req.body})
-                const getUser = await Users.updateOne(req.body.userId,{$set:req.body})
+                const getUser = await User.findByIdAndUpdate(req.body.userId,{
+                    $set:req.body
+                })
                 res.status(200).json("Data base has been updated")
         }catch(err){
             console.log(err)
@@ -31,11 +33,25 @@ Router.put("/:id",async (req,res) => {
     }
 })
 // delete user
-Router.get("/",(req,res) => {
-    res.send('hello')
+Router.delete("/:id", async (req,res) => {
+    if(req.body.userId == req.params.id || req.User.isAdmin){
+        try{
+            const getUserToDelete = await User.deleteOne(req.body.userId)
+            res.status(200).send("User has been deleted")
+        }catch(err){
+            res.status(500).send(err)
+        }
+    }
 })
 // get a user
-Router.get("/",(req,res) => {
-    res.send('hello')
+Router.get("/",async (req,res) => {
+    if(req.body.userId == req.params.id || req.User.isAdmin){
+        try{
+            const getUserToDelete = await User.deleteOne(req.body.userId)
+            res.status(200).send("User has been deleted")
+        }catch(err){
+            res.status(500).send(err)
+        }
+    }
 })
 module.exports = Router
