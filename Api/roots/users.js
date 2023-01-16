@@ -7,7 +7,6 @@ const Router = express.Router()
 Router.put("/:id",async (req,res) => {
     // const data =  await User.findById(req.params.id)
     // const userInfo = await User.findById({id:req.params.id})
-        
     if(req.body.userId == req.params.id){
         console.log(req.body.password,"undefined")
         if(req.body.password){
