@@ -1,13 +1,13 @@
 const express = require("express")
 const User = require("../models/users")
-const db = require("mongodb").Db
 const bcrypt = require("bcrypt")
 const Router = express.Router()
 
 // update user
 Router.put("/:id",async (req,res) => {
     // const data =  await User.findById(req.params.id)
-    // const userInfo = await User.findById({id:req.params.id})    
+    // const userInfo = await User.findById({id:req.params.id})
+        
     if(req.body.userId == req.params.id){
         console.log(req.body.password,"undefined")
         if(req.body.password){
@@ -36,22 +36,46 @@ Router.put("/:id",async (req,res) => {
 Router.delete("/:id", async (req,res) => {
     if(req.body.userId == req.params.id || req.User.isAdmin){
         try{
-            const getUserToDelete = await User.deleteOne(req.body.userId)
-            res.status(200).send("User has been deleted")
+            // const getUserToDelete = await User.deleteOne(req.params.id)
+            const getUser = await User.findOneAndDelete(req.params.id)
+            res.status(200).json("User has been deleted")
         }catch(err){
-            res.status(500).send(err)
+            return res.status(500).json(err)
         }
+    }else{
+        return res.status.json("You can allow deleteOne")
     }
 })
 // get a user
-Router.get("/",async (req,res) => {
-    if(req.body.userId == req.params.id || req.User.isAdmin){
-        try{
-            const getUserToDelete = await User.deleteOne(req.body.userId)
-            res.status(200).send("User has been deleted")
-        }catch(err){
-            res.status(500).send(err)
-        }
+Router.get("/:id",async (req,res) => {
+    try{
+        const getUserToDelete = await User.findById(req.params.id)
+        const {password,updatedAt,...other} = getUserToDelete._doc
+        res.send(other)
+        // res.status(200).json(getUserToDelete)
+    }catch(err){
+        res.status(500).send(err)
     }
 })
+
+// follow a user
+Router.put("/:id/follow",async (req,res) => {
+    if(req.params.id != req.body.userId){
+        try{
+            const getUser = await User.findById(req.params.id)
+            const getCurrentUser = await User.findById(req.body.userId)
+            if(!getUser.followers.includes(req.body.userId)){
+                await getUser.updateOne({$push:{followers:req.body.userId}})
+                await getCurrentUser.updateOne({$push:{following:req.body.userId}})
+            }else{
+                res.status(200).json("you are already following")
+            }
+        }catch(err){
+            res.status(500).json(err)
+        }
+    }else{
+        res.status(403).json("You cant follow yourself")
+    }
+})
+
 module.exports = Router
