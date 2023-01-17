@@ -1,5 +1,6 @@
 const express = require("express")
 const postModel = require("../models/post")
+const User = require("../models/users")
 const Router = express.Router()
 
 // createPost
@@ -46,16 +47,46 @@ Router.put("/:id",async(req,res) => {
 
 })   
 // like a post
-Router.put("/:id",async(req,res) => {
-    
+Router.put("/:id/like",async(req,res) => {
+    try{
+        const getPost =  await postModel.findById(req.params.id)
+        if(!getPost.likes.includes(req.body.userId)){
+            await getPost.updateOne({$push:{likes:req.body.userId}})
+            res.status(200).json("Post has been liked")
+        }else{
+            await getPost.updateOne({$pull:{likes:req.body.userId}})
+            res.status(200).json("you've disliked")
+        }  
+    }catch(err){
+        res.status(500).json(err)
+    }
 })
-// // get a post
-// Router.get("/",async(req,res) => {
-    
-// }
-// // get timeline post
-// Router.get("/",async(req,res) => {
-    
-// }
+// get a post
+Router.get("/:id",async( req,res) => {
+    try{
+        // const getPost =  await postModel.findById(req.body.userId)
+        const getPost =  await postModel.findById(req.params.id)
+        res.status(200).json(getPost)
+    }catch(err){
+        res.status(200).json(err)
+    }
+})
+
+// get timeline post
+Router.get("/sheep",async( req,res) => {
+    res.json("cow")
+    try{
+        const getCurrentUser =  await User.findById(req.body.userId)
+        const usersPost =  await postModel.find({userId:getCurrentUser._id})
+        const friendPost = await Promise.all(
+            getCurrentUser.following.map((friendId) =>{
+                postModel.find({userId:friendId})
+            })
+        )
+        res.status(200).json(usersPost.concat(...friendPost))
+    }catch(err){
+        res.status(200).json(err)
+    }
+})
 
 module.exports = Router
