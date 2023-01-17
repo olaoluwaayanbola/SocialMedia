@@ -7,7 +7,6 @@ const Router = express.Router()
 Router.put("/:id",async (req,res) => {
     // const data =  await User.findById(req.params.id)
     // const userInfo = await User.findById({id:req.params.id})
-        
     if(req.body.userId == req.params.id){
         console.log(req.body.password,"undefined")
         if(req.body.password){
@@ -66,7 +65,7 @@ Router.put("/:id/follow",async (req,res) => {
             const getCurrentUser = await User.findById(req.body.userId)
             if(!getUser.followers.includes(req.body.userId)){
                 await getUser.updateOne({$push:{followers:req.body.userId}})
-                await getCurrentUser.updateOne({$push:{following:req.body.userId}})
+                await getCurrentUser.updateOne({$push:{following:req.params.id}})
             }else{
                 res.status(200).json("you are already following")
             }
@@ -75,6 +74,26 @@ Router.put("/:id/follow",async (req,res) => {
         }
     }else{
         res.status(403).json("You cant follow yourself")
+    }
+})
+
+// unfollow a user
+Router.put("/:id/unfollow",async (req,res) => {
+    if(req.params.id != req.body.userId){
+        try{
+            const getUser = await User.findById(req.params.id)
+            const getCurrentUser = await User.findById(req.body.userId)
+            if(getUser.followers.includes(req.body.userId)){
+                await getUser.updateOne({$pull:{followers:req.body.userId}})
+                await getCurrentUser.updateOne({$pull:{following:req.params.id}})
+            }else{
+                res.status(200).json("you are already unFollowing this user")
+            }
+        }catch(err){
+            res.status(500).json(err)
+        }
+    }else{
+        res.status(403).json("You cant unFollow yourself")
     }
 })
 
