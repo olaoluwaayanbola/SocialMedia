@@ -1,14 +1,16 @@
 import { useState } from "react"
 
-export const useForm = ({initialStates ,interface}) => {
-    const [form,setForm] = useState<interface>(initialStates)
+export const useForm = (initialStates) => {
+    const [form,setForm] = useState<any>(initialStates)
     
-    const HandleForm = (event:React.FormEvent<HTMLFormElement>) => {
+    const HandleForm = (event:any):void => {
         const { type, name, value, checked} = event.target
-        setForm((prevValues) => ({
-            ...prevValues,
-            type === "checkbox" ? checked : value
-        }))
+        setForm((prevValues) => {
+            return(
+                ...prevValues,
+                [name]: type === "checkbox" ? checked : value
+            )
+        }) 
     }
-    return [form,HandleForm]
+    return { form,HandleForm }
 }
