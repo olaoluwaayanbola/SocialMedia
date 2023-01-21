@@ -3,7 +3,7 @@ import {useForm} from "../../customsHooks/DynamicFormControlled"
 export const Login = () => {
     const data = {
         Email:"",
-        Password:undefined
+        Password:""
     }
     const { form,HandleForm }:any = useForm(data)
     console.log(form)
