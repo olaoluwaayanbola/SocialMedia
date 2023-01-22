@@ -1,15 +1,15 @@
 import {useForm} from "../../customsHooks/DynamicFormControlled"
-// import {FormLogin} from "../../interfaces/FormLoginInterface"
-import style from './Login.module.css'
+import {friendSearch} from "../../interfaces/FormLoginInterface"
+import style from "../Login/Login.module.scss"
+
 export const Login = () => {
  return(
         <div className={style.Container}>
             <div className={style.LoginBox}>
-             box one
-            </div>
+             box          </div>
             <div className={style.SignupBox}>
             
             </div>       
-        </div>
+        </div>     
    )
 }
