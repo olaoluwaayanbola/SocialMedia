@@ -1,0 +1,12 @@
+.Container{
+    display:flex;
+    .TopBartitle{
+        flex:2
+    }
+    .TopBarSearchBar{
+        flex:4
+    }
+    .TopBarDetailAndIcons{
+        flex:3
+    }
+}
