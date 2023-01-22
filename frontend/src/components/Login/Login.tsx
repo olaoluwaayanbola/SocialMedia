@@ -1,18 +1,15 @@
 import {useForm} from "../../customsHooks/DynamicFormControlled"
 // import {FormLogin} from "../../interfaces/FormLoginInterface"
+import style from './Login.module.css'
 export const Login = () => {
-    const data = {
-        Email:"",
-        Password:""
-    }
-    const { form,HandleForm }:any = useForm(data)
-    console.log(form)
-    
-    return(
-        <>
-            <input name="Email" value={form.Email} onChange={HandleForm}/>
-            <input name="Email" value={form.Password} onChange={HandleForm}/>
+ return(
+        <div className={style.Container}>
+            <div className={style.LoginBox}>
+             box one
+            </div>
+            <div className={style.SignupBox}>
             
-        </>
-    )
+            </div>       
+        </div>
+   )
 }
