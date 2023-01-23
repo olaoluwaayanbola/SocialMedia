@@ -2,8 +2,7 @@ import './App.css'
 import { useState } from 'react'
 import React, { Suspense } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
-import {createBrowserRouter,Link} from "react-router-dom";
-// import {TopBarNavigation} from "./components/Navigations/Navigation"
+import {createBrowserRouter} from "react-router-dom";
 
 const TopBarNavigation = React.lazy(():any => import("./components/Navigations/Navigation"))
 
@@ -11,29 +10,25 @@ const TopBarNavigation = React.lazy(():any => import("./components/Navigations/N
 export function App() {
   return (
     <div className="App">
-      {/* <TopBarNavigation/> */}
+      <TopBarNavigation/>
     </div>
   )
 }
 
-export const Router = 
-  createBrowserRouter(
-      // basename: "/app",
+export const Router = createBrowserRouter(
     [
         {
-            path: "/ship",
-            // loader:CircularProgress,
+            path: "/",
             element:
-              <Suspense fallback={<CircularProgress/>}>
-                <TopBarNavigation/>
-              </Suspense>
+                <Suspense fallback={<CircularProgress/>}>
+
+                </Suspense>
         },
         {
             path: "about",
             element: <div>About</div>,
         },
-  ]
-  
+    ]
   )
 
 

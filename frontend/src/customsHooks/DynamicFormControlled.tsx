@@ -7,7 +7,7 @@ export const useForm = (initialStates:object) => {
         const { type, name, value, checked} = event.target
         setForm((prevValues:any) => ({
             ...prevValues,
-            [name]:value
+            [name] : type === "checkbox" ? checked :value
         })) 
     }
     return ( {form,HandleForm} )

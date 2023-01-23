@@ -1,12 +1,74 @@
+$MainBackgroundColor:#0000ff;
+
 .Container{
     display:flex;
+    padding:15px;
+    align-items:center;
+    background:$MainBackgroundColor;
     .TopBartitle{
-        flex:2
+        flex:2;
+        font-size:17px;
+        cursor: pointer;
+        font-weight: bold;
     }
     .TopBarSearchBar{
-        flex:4
+        flex:3;
+        color:black;
+        .TopBarSearchBarDesign{
+            height:30px;
+            background:whitesmoke;
+            border-radius:5px;
+            width:80%;
+            label{
+                display:flex;
+                .SearchIcon{
+                    padding:5px;
+                    font-size: 20px;
+                }
+                .searchBar{
+                    width:90%;
+                    color:black;
+                    border:none;
+                    outline:none;
+                    height:30px;
+                    border-top-left-radius:5px;
+                    border-bottom-left-radius:5px;
+                }   
+            }
+        }
     }
     .TopBarDetailAndIcons{
-        flex:3
+        flex:3;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        .TextLink{
+            flex:2;
+            & > *{margin-right:15px;}
+        }
+        .IconLinks{
+            flex:4;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            .Icons > *{
+                margin-right:20px;
+            }
+        }
+    }
+}
+@media screen and (max-width:700px){
+    .Container{
+        width:fit-content !important;
+        background:grey;
+        .TopBartitle{
+                flex:1;
+                font-size:11px;
+                margin-right:10px;
+            }
+        .TopBarDetailAndIcons{
+            flex:0;
+            display:none;
+        }
     }
 }
