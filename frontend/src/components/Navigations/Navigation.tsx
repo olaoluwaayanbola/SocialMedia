@@ -7,7 +7,7 @@ import MessageIcon from '@mui/icons-material/Message';
 import {useForm} from "../../customsHooks/DynamicFormControlled";
 import NotificationsIcon from '@mui/icons-material/Notifications';
 
-export const TopBarNavigation = () => {
+const TopBarNavigation = () => {
     const {form,HandleForm} = useForm(frienddata);
     return(
         <div className={style.Container}>
@@ -27,8 +27,8 @@ export const TopBarNavigation = () => {
           </div>
           <div className={style.TopBarDetailAndIcons}>
               <div className={style.TextLink}>
-                <Link to="/Home">Home</Link>
-                <Link to="/Home" >TimeLine</Link>
+                {/* <Link to="/Home">Home</Link>
+                <Link to="/Home" >TimeLine</Link> */}
               </div>
               <div className={style.IconLinks}> 
                   <div className={style.Icons}>
@@ -44,3 +44,5 @@ export const TopBarNavigation = () => {
         </div>
     )
 }
+
+export default TopBarNavigation
