@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Zoro from "../../assets/zoro.png"
 import style from "./Navigations.module.scss";
 import {frienddata} from "../../interfaces/data";
 import PersonIcon from '@mui/icons-material/Person';
@@ -15,20 +16,26 @@ const TopBarNavigation = () => {
               <h2>SocialMedia</h2>
           </div>  
           <div className={style.TopBarSearchBar}>
-              <label>
-                <input 
-                type="text" 
-                name="friendSearch"
-                value={form.friendSearch}
-                onChange={HandleForm}
-                />
-                <SearchIcon />
-              </label>
+              <div className={style.TopBarSearchBarDesign}>
+                <label>
+                    <input 
+                    type="text" 
+                    name="friendSearch"
+                    value={form.friendSearch}
+                    className={style.searchBar}
+                    onChange={HandleForm}
+                    autoFocus
+                    />
+                    <div className={style.SearchIcon}>
+                        <SearchIcon />
+                    </div>
+                </label>
+              </div>
           </div>
           <div className={style.TopBarDetailAndIcons}>
               <div className={style.TextLink}>
-                {/* <Link to="/Home">Home</Link>
-                <Link to="/Home" >TimeLine</Link> */}
+                <Link to="/Home">Home</Link>
+                <Link to="/Home" >TimeLine</Link>
               </div>
               <div className={style.IconLinks}> 
                   <div className={style.Icons}>
@@ -37,7 +44,10 @@ const TopBarNavigation = () => {
                       <NotificationsIcon/>                   
                   </div>
                   <div className={style.DisplayImage}>
-                      <img />
+                      <img 
+                        // src={Zoro} 
+                        alt="profile Image" 
+                        className={style.NavProfileImage}/>
                   </div>
               </div>
           </div>    
