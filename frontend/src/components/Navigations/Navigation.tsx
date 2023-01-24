@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import Zoro from "../../assets/zoro.png"
+import Badge from '@mui/material/Badge';
+import Zoro from "../../assets/zoro.png";
 import style from "./Navigations.module.scss";
 import {frienddata} from "../../interfaces/data";
 import PersonIcon from '@mui/icons-material/Person';
@@ -39,15 +40,15 @@ const TopBarNavigation = () => {
               </div>
               <div className={style.IconLinks}> 
                   <div className={style.Icons}>
-                      <div className={style.badge}>
-                          <PersonIcon className={style.badgeIcons}/>
-                      </div>
-                      <div className={style.badge}>
-                          <NotificationsIcon className={style.badgeIcons}/>                   
-                      </div>
-                      <div className={style.badge}>
-                          <MessageIcon className={style.badgeIcons}/>  
-                      </div>
+                      <Badge badgeContent={4} color="secondary">
+                            <PersonIcon /> 
+                      </Badge>
+                      <Badge badgeContent={4} color="secondary">
+                            <NotificationsIcon />
+                      </Badge>
+                      <Badge badgeContent={4} color="secondary">
+                            <MessageIcon /> 
+                      </Badge>
                   </div>
                   <div className={style.DisplayImage}>
                       <img 
