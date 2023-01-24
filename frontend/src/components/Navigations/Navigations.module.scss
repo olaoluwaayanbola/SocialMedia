@@ -1,6 +1,8 @@
 $MainBackgroundColor:#0000ff;
+$font-color:#0000;
 
 .Container{
+    height:40px;
     display:flex;
     padding:15px;
     align-items:center;
@@ -13,10 +15,10 @@ $MainBackgroundColor:#0000ff;
     }
     .TopBarSearchBar{
         flex:3;
-        color:black;
+        color:$font-color;
         .TopBarSearchBarDesign{
             height:30px;
-            background:whitesmoke;
+            background:red;
             border-radius:5px;
             width:80%;
             label{
@@ -26,11 +28,11 @@ $MainBackgroundColor:#0000ff;
                     font-size: 20px;
                 }
                 .searchBar{
-                    width:90%;
-                    color:black;
+                    width:92%;
                     border:none;
-                    outline:none;
                     height:30px;
+                    outline:none;
+                    color:$font-color;
                     border-top-left-radius:5px;
                     border-bottom-left-radius:5px;
                 }   
@@ -40,7 +42,6 @@ $MainBackgroundColor:#0000ff;
     .TopBarDetailAndIcons{
         flex:3;
         display:flex;
-        align-items:center;
         justify-content:space-between;
         .TextLink{
             flex:2;
@@ -49,7 +50,6 @@ $MainBackgroundColor:#0000ff;
         .IconLinks{
             flex:4;
             display:flex;
-            align-items:center;
             justify-content:space-between;
             .Icons > *{
                 margin-right:20px;
@@ -57,13 +57,14 @@ $MainBackgroundColor:#0000ff;
         }
     }
 }
+
+
 @media screen and (max-width:700px){
     .Container{
-        width:fit-content !important;
         background:grey;
         .TopBartitle{
                 flex:1;
-                font-size:11px;
+                font-size:15px;
                 margin-right:10px;
             }
         .TopBarDetailAndIcons{
