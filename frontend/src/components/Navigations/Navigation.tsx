@@ -18,7 +18,7 @@ const TopBarNavigation = () => {
           <div className={style.TopBarSearchBar}>
               <div className={style.TopBarSearchBarDesign}>
                 <label>
-                    <input 
+                    <input
                     type="text" 
                     name="friendSearch"
                     value={form.friendSearch}
@@ -39,9 +39,15 @@ const TopBarNavigation = () => {
               </div>
               <div className={style.IconLinks}> 
                   <div className={style.Icons}>
-                      <PersonIcon/>
-                      <MessageIcon />
-                      <NotificationsIcon/>                   
+                      <div className={style.badge}>
+                          <PersonIcon className={style.badgeIcons}/>
+                      </div>
+                      <div className={style.badge}>
+                          <NotificationsIcon className={style.badgeIcons}/>                   
+                      </div>
+                      <div className={style.badge}>
+                          <MessageIcon className={style.badgeIcons}/>  
+                      </div>
                   </div>
                   <div className={style.DisplayImage}>
                       <img 
