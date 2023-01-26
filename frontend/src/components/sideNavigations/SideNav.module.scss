@@ -1,9 +1,5 @@
 .Container{
-    height: calc(100vh - 40px);
-    min-width:50
-    overflow-y:scroll;
-    background:green;
-    .ContainerWrapper{
-        padding:50px;
-    }
+    // flex:3;
+    
+    background:grey;
 }
