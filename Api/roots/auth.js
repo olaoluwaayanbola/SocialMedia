@@ -7,6 +7,7 @@ const Router = express.Router()
 // Register User
 Router.post("/register", async (req,res) => {
     try{
+        
         // basic stringinify of data you are sending
         const salt = await bcrypt.genSalt(12);
         const hashedPassword = await bcrypt.hash(req.body.password,salt)
