@@ -11,6 +11,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.11.3",
     "@material-ui/utils": "^4.11.3",
     "@mui/core": "5.0.0-alpha.54",
@@ -19,7 +20,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.0",
-    "scss": "^0.2.4"
+    "scss": "^0.2.4",
+    "utils": "link:@mui-ui/core/utils"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",
