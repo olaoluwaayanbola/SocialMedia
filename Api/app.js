@@ -13,7 +13,7 @@ dotenv.config()
 
 // Connect mongoose
 mongoose.set('strictQuery', true);
-mongoose.connect(process.env.MONGO_URL,() =>{
+mongoose.connect(process.env.MONGO_URL, () => {
     console.log("Connected to mongo");
 });
 
@@ -23,15 +23,15 @@ app.use(express.json())
 app.use(morgan("common"))
 
 // middleware for routes
-app.use("/api/auth",authRoute)
-app.use("/api/users",userRoute)
-app.use("/api/usersPost",PostRoute )
+app.use("/api/auth", authRoute)
+app.use("/api/users", userRoute)
+app.use("/api/usersPost", PostRoute)
 
 // // get request home
-app.get("/",(req,res) => {
+app.get("/", (req, res) => {
     res.send("welcome to homepage")
 })
 
-app.listen(5050,() => {
+app.listen(5050, () => {
     console.log("sever is online")
 })
