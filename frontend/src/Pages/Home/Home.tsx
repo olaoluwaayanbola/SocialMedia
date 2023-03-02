@@ -5,7 +5,9 @@ const Home = ( ) => {
     return(
         <div className={style.Contianer}>
             <TopBarNavigation/>
-            <asi>
+            <aside>
+
+            </aside>
             <main>
                 
             </main>
