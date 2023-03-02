@@ -5,7 +5,6 @@ const MainContext = createContext({})
 /**
  * @param MainContextWrappper 
  * -- takes in the children nodes and wraps 
- * 
  */ 
 
 export MainContextWrappper = ({children}) =>{
