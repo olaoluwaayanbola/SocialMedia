@@ -7,6 +7,7 @@ export const Login = () => {
         <div className={style.Container}>
           <div className={style.SignupBox}>
             
-            </div>        </div>     
+           </div>
+        </div>     
    )
 }
