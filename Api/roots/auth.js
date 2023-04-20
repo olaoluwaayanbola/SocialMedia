@@ -33,10 +33,14 @@ Router.post("/login",async(req,res) => {
     try{
         const user = await userModel.findOne({
         email:req.body.email,
+        
         // password:req.body.password
+
         })
         !user && res.status(404).json("user not found")
+        
         // res.status(200).send("you can enter")
+
         const validPassword = await bcrypt.compare(req.body.password,user.password)
         !validPassword && res.status(404).send("Incorrect password")
         res.status(200).send(user)
